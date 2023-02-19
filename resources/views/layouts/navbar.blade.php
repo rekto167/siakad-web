@@ -5,7 +5,7 @@
         </button>
     </div>
     <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl">{{config('app.name')}}</a>
+        <a class="btn btn-ghost normal-case text-xl" href="{{route('home')}}">{{config('app.name')}}</a>
     </div>
     <div class="flex-none">
 {{--        <div class="dropdown dropdown-end">--}}
@@ -40,7 +40,7 @@
                 </li>
                 <li><a>Settings</a></li>
                 <li><a>Logout</a></li>
-                <li><a>Login</a></li>
+                <li><a href="{{route('login')}}">Login</a></li>
             </ul>
         </div>
     </div>

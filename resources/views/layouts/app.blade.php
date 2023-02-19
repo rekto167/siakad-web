@@ -7,12 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/full.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/font-poppins.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
     @livewireStyles
     <title>{{config('app.name')}} | @yield('title')</title>
 </head>
 <body>
-@include('layouts.navbar')
+@if((\Illuminate\Support\Facades\Route::current()->getName() == 'login') == false)
+    @include('layouts.navbar')
+@endif
 <div>
     @yield('content')
 </div>
