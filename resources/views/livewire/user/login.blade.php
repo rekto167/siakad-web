@@ -6,13 +6,25 @@
             </figure>
             <span class="text-center font-bold text-white">Sistem Informasi Akademik</span>
             <div class="card-body items-center text-center">
-                <select class="select w-full max-w-xs" wire:model="loginas">
-                    <option disabled selected>Anda login sebagai ?</option>
-                    <option value="super_admin">Super Admin</option>
-                    <option value="admin">Admin</option>
-                    <option value="guru">Guru</option>
-                    <option value="siswa">Siswa</option>
-                </select>
+                <div class="form-control">
+                    <div class="flex">
+                        <label class="label cursor-pointer">
+                            <input type="radio" value="guru" wire:model="loginas" name="radio-10" class="radio radio-primary checked:bg-blue-500" checked/>
+                            <span class="label-text text-white font-semibold ml-2">Guru</span>
+                        </label>
+                        <label class="label cursor-pointer">
+                            <input type="radio" value="siswa" wire:model="loginas" name="radio-10" class="radio radio-warning checked:bg-amber-500" checked/>
+                            <span class="label-text text-white font-semibold ml-2">Siswa</span>
+                        </label>
+                    </div>
+                </div>
+{{--                <select class="select w-full max-w-xs" wire:model="loginas">--}}
+{{--                    <option disabled selected>Anda login sebagai ?</option>--}}
+{{--                    <option value="super_admin">Super Admin</option>--}}
+{{--                    <option value="admin">Admin</option>--}}
+{{--                    <option value="guru">Guru</option>--}}
+{{--                    <option value="siswa">Siswa</option>--}}
+{{--                </select>--}}
                 <input type="text" placeholder="Ketik {{$login_jenis}} anda.." class="input w-full max-w-xs" />
                 <input type="password" placeholder="Ketik Password anda.." class="input w-full max-w-xs" />
                 <button class="btn btn-primary">Login</button>
