@@ -18,13 +18,6 @@
                         </label>
                     </div>
                 </div>
-{{--                <select class="select w-full max-w-xs" wire:model="loginas">--}}
-{{--                    <option disabled selected>Anda login sebagai ?</option>--}}
-{{--                    <option value="super_admin">Super Admin</option>--}}
-{{--                    <option value="admin">Admin</option>--}}
-{{--                    <option value="guru">Guru</option>--}}
-{{--                    <option value="siswa">Siswa</option>--}}
-{{--                </select>--}}
                 <input type="text" placeholder="Ketik {{$login_jenis}} anda.." class="input w-full max-w-xs" />
                 <input type="password" placeholder="Ketik Password anda.." class="input w-full max-w-xs" />
                 <button class="btn btn-primary">Login</button>
