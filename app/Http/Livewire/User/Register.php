@@ -14,10 +14,14 @@ class Register extends Component
     public $email;
     public $password;
     public $username;
+    public $nip;
+    public $nis;
+    public $role_selected;
 
     public function mount()
     {
         $this->list_role = Role::all();
+        $this->emit('cleaveJsMount');
     }
 
     public function render()

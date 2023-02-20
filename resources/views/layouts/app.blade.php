@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="{{asset('css/full.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/font-poppins.css')}}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{asset('js/3.2.6.js')}}"></script>
+{{--    <script src="https://cdn.tailwindcss.com"></script>--}}
     @livewireStyles
     <title>{{config('app.name')}} | @yield('title')</title>
 </head>
@@ -20,6 +21,7 @@
 <div>
     @yield('content')
 </div>
+<script src="{{asset('js/app.js')}}"></script>
 @livewireScripts
 </body>
 </html>
