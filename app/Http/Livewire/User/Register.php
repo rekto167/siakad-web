@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
@@ -17,6 +18,8 @@ class Register extends Component
     public $nip;
     public $nis;
     public $role_selected;
+    public $gender;
+    public $alamat;
 
     public function mount()
     {
@@ -32,13 +35,39 @@ class Register extends Component
     public function create()
     {
         try {
-            $user = User::create([
-                'name' => $this->name,
-                'email' => $this->email,
-                'username' => $this->username,
-                'password' => Hash::make($this->password)
+            if($this->role_selected == 'super_admin' || $this->role_selected == 'admin'){
+                $user = User::create([
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'password' => Hash::make($this->password),
+                    'username' => $this->username,
+                ]);
+                $user->assignRole($this->role_selected);
+                session()->flash('success', 'User created successfully');
+            } elseif($this->role_selected == 'guru'){
+                $user = User::create([
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'password' => Hash::make($this->password),
+                    'nip' => $this->nip,
+                ]);
+                $user->assignRole($this->role_selected);
+                session()->flash('success', 'User created successfully');
+            } elseif($this->role_selected == 'murid'){
+                $user = User::create([
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'password' => Hash::make($this->password),
+                    'nis' => $this->nis,
+                ]);
+                $user->assignRole($this->role_selected);
+                session()->flash('success', 'User created successfully');
+            }
+            $profile = Profile::create([
+                'user_uuid' => $user->uuid,
+                'alamat' => $this->alamat,
+                'gender' => $this->gender
             ]);
-            session()->flash('success', $user->username.' Berhasil di tambahkan.');
         }catch (\Exception $error)
         {
             session()->flash('error', $error->getMessage());
