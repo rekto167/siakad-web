@@ -22,3 +22,7 @@ Route::get('/login', function (){
 Route::get('/register', function () {
    return view('user.register');
 });
+
+Route::prefix('mapel')->group(function(){
+    Route::get('/', [\App\Http\Controllers\MapelController::class, 'index'])->name('mapel');
+});

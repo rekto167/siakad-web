@@ -20,13 +20,25 @@
 <body>
     @if ((\Illuminate\Support\Facades\Route::current()->getName() == 'login') == false)
         @include('layouts.navbar')
+        @include('layouts.sidebar')
     @endif
-    <div>
+    <div class="z-0">
         @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
     {{-- <script src="{{ asset('assets/cleave.min.js') }}"></script> --}}
     @livewireScripts
+    <script>
+        const toggleSidebar = () => {
+            let sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('hidden'))
+            {
+                sidebar.classList.remove('hidden');
+            } else{
+                sidebar.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 
 </html>

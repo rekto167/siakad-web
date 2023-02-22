@@ -155,4 +155,9 @@ return [
 
     'render_on_redirect' => false,
 
+    'pagination' => [
+        'theme' => 'tailwind',
+    ],
+
+
 ];
