@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class Level extends Model
+class RuangKelas extends Model
 {
     use HasFactory;
+    protected $table = 'ruang_kelas';
     protected $guarded = ['id'];
+
     protected static function boot()
     {
         parent::boot();

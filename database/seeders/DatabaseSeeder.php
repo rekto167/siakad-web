@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             HariSeeder::class,
             MapelSeeder::class,
-            LevelSeeder::class
         ]);
     }
 }

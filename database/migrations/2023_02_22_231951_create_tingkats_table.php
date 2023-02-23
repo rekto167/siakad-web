@@ -16,8 +16,7 @@ class CreateTingkatsTable extends Migration
         Schema::create('tingkats', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
-            $table->string('level_uuid');
-            $table->foreign('level_uuid')->references('uuid')->on('levels');
+            $table->string('nama');
             $table->string('tahun_ajaran');
             $table->timestamps();
         });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLevelsTable extends Migration
+class CreateRuangKelasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
+        Schema::create('ruang_kelas', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
-            $table->string('nama');
-            $table->string('nama_lengkap');
-            $table->string('slug');
+            $table->string('tingkat_uuid');
+            $table->foreign('tingkat_uuid')->references('uuid')->on('tingkats');
+            $table->string('jurusan_uuid')->nullable();
+            $table->foreign('jurusan_uuid')->references('uuid')->on('jurusans');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::dropIfExists('ruang_kelas');
     }
 }
