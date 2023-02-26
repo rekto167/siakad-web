@@ -9,7 +9,9 @@ use Livewire\Component;
 class Index extends Component
 {
     public $mapel;
+    public $mapel_edit;
     public $showModal = false;
+    public $showModalEdit = false;
 
     public function render()
     {
@@ -37,7 +39,7 @@ class Index extends Component
         $this->mapel = null;
     }
 
-    public function bukamodal()
+    public function bukamodal($data)
     {
         $this->showModal = true;
     }
@@ -45,5 +47,44 @@ class Index extends Component
     public function tutupmodal()
     {
         $this->showModal = false;
+    }
+
+    public function destroy($uuid)
+    {
+        try{
+            $data = Mapel::where('uuid', $uuid)->firstOrFail();
+            $data->delete();
+            session()->flash('success', 'Berhasil hapus '.$uuid);
+        } catch (Exception $error) {
+            session()->flash('error', $error->getMessage());
+        }
+    }
+
+    public function updatemapel($uuid)
+    {
+        $this->validate([
+            'mapel_edit' => 'string'
+        ]);
+
+        try{
+            $data = Mapel::where('uuid', $uuid)->firstOrFail();
+            $data->nama = $this->mapel_edit;
+            $data->save();
+            session()->flash('success', 'Mapel berhasil diupdate');
+            $this->tutupmodaledit();
+        }catch (Exception $error){
+            session()->flash('error', $error->getMessage());
+            $this->tutupmodaledit();
+        }
+    }
+
+    public function bukamodaledit($data)
+    {
+        $this->mapel_edit = $data;
+        $this->showModalEdit = true;
+    }
+    public function tutupmodaledit()
+    {
+        $this->showModalEdit = false;
     }
 }
