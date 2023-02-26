@@ -25,4 +25,5 @@ Route::get('/register', function () {
 
 Route::prefix('mapel')->group(function(){
     Route::get('/', [\App\Http\Controllers\MapelController::class, 'index'])->name('mapel');
+    Route::get('/jadwal', [\App\Http\Controllers\MapelController::class, 'jadwal_index'])->name('jadwal');
 });

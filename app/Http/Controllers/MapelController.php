@@ -10,4 +10,9 @@ class MapelController extends Controller
     {
         return view('mapel.index');
     }
+
+    public function jadwal_index()
+    {
+        return view('jadwal.index');
+    }
 }
