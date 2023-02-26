@@ -13,6 +13,7 @@
     <script src="{{ asset('js/3.2.6.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="{{ asset('assets/cleave.min.js') }}"></script>
+    <script src="{{ asset('assets/jquery-3.6.3.js') }}"></script>
     @livewireStyles
     <title>{{ config('app.name') }} | @yield('title')</title>
 </head>
@@ -26,15 +27,16 @@
         @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     {{-- <script src="{{ asset('assets/cleave.min.js') }}"></script> --}}
     @livewireScripts
     <script>
         const toggleSidebar = () => {
             let sidebar = document.getElementById('sidebar');
-            if (sidebar.classList.contains('hidden'))
-            {
+            if (sidebar.classList.contains('hidden')) {
                 sidebar.classList.remove('hidden');
-            } else{
+            } else {
                 sidebar.classList.add('hidden');
             }
         }
